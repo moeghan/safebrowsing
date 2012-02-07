@@ -36,18 +36,21 @@ $url = (isset($_GET['lookup'])) ?  urldecode($_GET['lookup']) : '';
 
 $counter = 0;
 
-if(isset($_SERVER['ENV']) && $_SERVER['ENV'] == 'PAGODA'){
+if(isset($_SERVER['ENV']) && $_SERVER['ENV'] == 'PAGODA'){  
   /* procedural API */
   $memcache_obj = memcache_connect($_SERVER['MEMCACHE_HOST'], $_SERVER['MEMCACHE_PORT']);
   //create if not exist
   memcache_add($memcache_obj, 'counter', 1, false, 0);
+  var_dump($counter);
+  
   if($url != '') {
     /* increment counter by 1 */
     $counter = memcache_increment($memcache_obj, 'counter');
+    var_dump($counter); 
   }
   $counter = ($counter == 0) ?  memcache_get($memcache_obj, 'counter') : $counter;
   
 }
-
+var_dump($counter);
 echo $h2o->render(array('counter' => $counter, 'full_url' => $url,'url' => parse_url($url)));
 ?>
