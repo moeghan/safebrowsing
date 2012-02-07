@@ -34,5 +34,13 @@ $h2o = new h2o('./themes/'.THEME.'/'.$template.'.html',
 
 $url = (isset($_GET['lookup'])) ?  urldecode($_GET['lookup']) : '';
 
-echo $h2o->render(array('full_url' => $url,'url' => parse_url($url)));
+$counter = 0;
+if(isset($_SERVER['ENV']) && $_SERVER['ENV'] == 'PAGODA' && $url != ''){
+  /* procedural API */
+  $memcache_obj = memcache_connect($_SERVER['MEMCACHE_HOST'], $_SERVER['MEMCACHE_PORT']);
+  /* increment counter by 2 */
+  $counter = memcache_increment($memcache_obj, 'counter', 2);
+}
+
+echo $h2o->render(array('counter' => $counter, 'full_url' => $url,'url' => parse_url($url)));
 ?>
