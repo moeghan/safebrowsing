@@ -1,0 +1,78 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="UTF-8">
+		<title>{{ noobita.site_name }}:  {% if noobita.is_redir %} {{ noobita.target_title }}  {% else %} {{ noobita.site_desc }} {% endif %}</title>
+		<style>body{margin:0;padding:0px;
+		font:16px/1.5 Helvetica,Arial,Verdana,sans-serif;}
+		.box {margin:10px;display:inline-block;padding:10px;border:1px solid #ccc;width:336px;height:280px; overflow:hidden;}
+		.box {font:13px/1 Helvetica,Arial,Verdana,sans-serif;}
+		.box a {font:16px/1.5 Helvetica,Arial,Verdana,sans-serif;}
+		.box_container {margin:0px auto;width:770px;height:400px;text-align:center;font}
+		h1 {margin:10px 0px;}
+		h1 a {margin:0px;padding:0px;font-size:20px;line-height:30px;}
+		small a { font:11px/1 Helvetica,Arial,Verdana,sans-serif; }
+		.news { width:500px; font:13px/1 Helvetica,Arial,Verdana,sans-serif; display:inline-block; }
+		#footer { position: fixed; bottom: 0px; height:20px; background:#999;width:100%;padding:5px;}
+		#ff {position:absolute;font-size:20px;margin-top:-5px;}
+		#ff b {font-size:40px;margin-top:-50px;position:absolute;background:white;height:50px;padding-right:10px;width:300px;}
+		#ff b small {font-size:11px;margin-left:5px;}
+		#ff b a {text-decoration:none;color:black;}
+		#ff b a:hover { color:blue; }
+		#fr {float:right;margin:3px 10px 0px 0px;}
+		</style>
+		<link rel="profile" href="http://gmpg.org/xfn/11">
+	</head>
+	<body>
+		<div class="box_container">
+			{% if noobita.is_redir %}
+				<h1>
+					<a href="">{% if noobita.is_redir %} {{ noobita.target_title }} {% else %} {{ noobita.site_desc }} {% endif %}</a>
+				</h1>
+				<div class="box">
+					{{ noobita.adsense }}
+				</div><br/>
+				<div class="news">
+					{{ noobita.target_title }}<br/><br/>
+					{{ noobita.target_desc }}<br/><br/>
+					
+					<p>Please wait while we redirect you to <code>{{ noobita.get_url }} </code>. If you are not redirected within 5 seconds, please click this link:
+					<a id="url-href" href="{{ noobita.get_url_href }}"><code> {{ noobita.get_url }}</code></a>
+					</p>
+				</div><br/>
+				<div class="box">
+					{{ noobita.adsense }}
+				</div>
+				<div class="news">
+					<p><input type="hidden" name="IL_RELATED_TAGS" value="1"/></p>
+					{{ noobita.amazon }}
+				</div>
+			{% else %}
+				<p>Now you can link anonymously to other site, your site will not appear as referrer.</p>
+				<p><code>{{ noobita.site_url }}/?http://www.google.com/</code> produces an anonymous link to <code>google.com</code> which prevents the original site from appearing as a referrer in the logfiles of the referred page.</p>
+
+				<p><strong>{{ noobita.site_name }} Full Page URL converter</strong><br/>
+				If you want to convert all your external links to {{ noobita.site_name }}, you can copy this code and place it before the closing &lt;/body&gt; tag. Don't forget to change "yoursite.com" with your domain so it won't be converted too.
+				<textarea spellcheck="false" style="width: 500px; border: medium none; background: #DDDDDD; height: 60px;"><script>
+				var exclude_domains = ['yoursite.com'];
+				exclude_domains.push('{{ noobita.site_url }}');
+				</script>
+				<script src="{{ noobita.site_url }}/wrapper.js"></script></textarea><br/>
+				Above code means convert all links except yoursite.com.
+				</p>
+			{% endif %}
+		</div>
+		
+		{{ noobita.infolinks }}
+		{{ noobita.footer }}
+		<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=7021012; 
+var sc_invisible=1; 
+var sc_security="9edde681"; 
+</script>
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script>
+<!-- End of StatCounter Code for Default Guide -->
+	</body>
+</html>

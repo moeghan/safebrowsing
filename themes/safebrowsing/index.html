@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Safe Browsing</title>
+    <meta content="" name="description">
+    <meta content="" name="author">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.css">
+    <link rel="stylesheet" href="/themes/safebrowsing/docs.css">
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css">
+
+    <!-- Le fav and touch icons -->
+    <link href="http://twitter.github.com/bootstrap/assets/ico/favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link href="http://twitter.github.com/bootstrap/assets/ico/bootstrap-apple-57x57.png" rel="apple-touch-icon">
+    <link href="http://twitter.github.com/bootstrap/assets/ico/bootstrap-apple-72x72.png" sizes="72x72" rel="apple-touch-icon">
+    <link href="http://twitter.github.com/bootstrap/assets/ico/bootstrap-apple-114x114.png" sizes="114x114" rel="apple-touch-icon">
+  </head>
+
+  <body data-rendering="true">
+
+    <!-- Topbar
+    ================================================== -->
+    <div data-scrollspy="scrollspy" class="topbar">
+      <div class="topbar-inner">
+        <div class="container">
+          <a class="brand span3" href="http://dropsugar.com"></a>
+          <ul class="nav">
+            <li><a href="http://amplop.in">Amplop.in</a></li>
+            <li><a href="http://tro.li">Tro.li</a></li>
+            <li class="active"><a href="http://safebrowsing.info">Safe Browsing</a></li>        
+          </ul>
+          <ul class="nav secondary-nav">
+            <li><a href="http://estebu.dropsugar.com">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    {%block header%}
+
+    <!-- Masthead (blueprinty thing)
+    ================================================== -->
+    <header id="overview" class="jumbotron masthead">
+      <div class="inner">
+        <div class="container">
+          <h1>Browse the Internet Safely</h1>
+          <p class="lead">Safe Browsing is an application from dropsugar built for internet users to lookup an URL whether it's contains phising, malware or not trusted.<br>
+          </p>
+          <p><strong>Nerd Alert: </strong>It's using <a href="http://www.mywot.com">Web Of Trust</a> API and <a href="http://code.google.com/apis/safebrowsing/">Google Safe Browsing*</a> API.</p>
+        </div><!-- /container -->
+      </div>
+    
+    </header>
+    <!-- Quickstart options
+    ================================================== -->
+    <div class="quickstart">
+      <div class="container">
+      <h2>Inspect site:</h2>
+        <div class="row">
+            <form action="" method="get">
+              <div class="clearfix">
+                <input type="text" name="lookup" id="" class="span13" placeholder="http://somewebsites.com/some_url/here.html" value="http://">
+                <button class="btn primary" type="submit" class="span3">Lookup URL</button>
+              </div>              
+            </form>
+        </div><!-- /row -->
+      </div>
+    </div>
+{% endblock %}
+    <div class="container">
+{% block content %}{%endblock%}
+
+
+<!-- About Bootstrap
+================================================== -->
+<section id="about">
+  <div class="page-header">
+    <h1>Webmaster <small>Extra security for your users</small></h1>
+  </div>
+  <div class="row">
+    <div class="span-one-third">
+      <h3>Full Page Link Converter</h3>
+      <p>Moderating user generated content from link spammer is a hard task. 
+      Anti spam does not help when there are paid, human spammer. <strong>We feel your pain</strong>. This script will give additional security by converting URLs posted by users to Safe Browsing.</p>
+      <p>Please paste before closing body tag and don't forget to change yoursite.com to your site domain.</p>
+      <textarea class="prettyprint span-one-third" style="height:120px">
+<script>
+	var exclude_domains = ['yoursite.com'];
+	exclude_domains.push('safebrowsing.info');
+	</script>
+	<script src="http://safebrowsing.info/wrapper.js"></script>
+</textarea>
+    </div>
+    <div class="span-one-third">
+      <h3>Browser support</h3>
+      <p>Safe Browsing script is tested and supported in major browsers like Chrome, Safari, Internet Explorer, and Firefox.</p>
+      <img alt="Tested and supported in Chrome, Safari, Internet Explorer, and Firefox" src="http://twitter.github.com/bootstrap/assets/img/browsers.png">
+          </div>
+    <div class="span-one-third">
+      <h3>About dropsugar</h3>
+      <p>dropsugar a group of geeks who love to research, build and automate things. Here is some of them:</p>
+      <ul>
+        <li><a href="http://amplop.in">amplop.in</a> Indonesian web based financial planning software</li>
+        <li><a href="http://tro.li">tro.li</a> Indonesian online shop creator</li>
+        <li><a href="http://safebrowsing.info">Safe Browsing</a> lookup an URL whether it's contains phising, malware or not trusted.</li>
+        <li><a href="http://dropsugar.com">Visit Dropsugar</a></li>
+      </ul>
+    </div>
+  </div><!-- /row -->
+
+  </section>
+
+
+
+    </section></div><!-- /container -->
+
+    <footer class="footer">
+      <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>
+          Designed with <a href="http://twitter.github.com/bootstrap">Twitter Bootstrap</a>. Hosting by <a href="http://pagodabox.com">Pagoda Box</a>.
+        </p>
+      </div>
+    </footer>
+    <a href="http://github.com/buchin"><img style="position: absolute; top: 40px; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="/themes/safebrowsing/jquery.xdomainajax.js"></script>
+    <script type="text/javascript">{%block js%}{% endblock %}</script>
+    
+</body></html>

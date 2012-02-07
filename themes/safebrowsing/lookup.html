@@ -1,0 +1,136 @@
+{% extends 'index.html' %}
+{% block header %}{% endblock %}
+{% block content %}
+<!-- About Bootstrap
+================================================== -->
+<section id="about">
+
+  <div class="page-header">
+    <h1>Status: <span id="status_label" class="label important" style="font-size: 30px;">Unsafe</span> <small id="status"> It's <strong>not recomended</strong> to visit the site. But if you understand the risk and need to go there, <a href="{{ full_url }}">click here</a>.</small></h1>
+  </div>
+  <div class="row">
+    
+    <div class="span6">
+    <small>Advertisement(<a href="#" title="We need to pay our host ^_^" id="ad_why">why?</a>)</small>
+    <script type="text/javascript"><!--
+    google_ad_client = "ca-pub-2365634229314364";
+    /* safebrowsing */
+    google_ad_slot = "2307512788";
+    google_ad_width = 300;
+    google_ad_height = 250;
+    //-->
+    </script>
+    <script type="text/javascript"
+    src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+    </script>
+    </div>
+    <div class="span10">
+      <h3>Details</h3>
+      <p>Here is the result of our url lookup.</p>
+      <table class="bordered-table zebra-striped">
+              <thead>
+                <tr>
+                  <th style="width: 50%;">Parameter</th>
+                  <th>Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Trustworthiness
+                  </td>
+                  <td>
+                    <span class="label" id="t">Unknown</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Vendor reliability
+                  </td>
+                  <td>
+                    <span class="label" id="r">Unknown</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Privacy
+                  </td>
+                  <td>
+                    <span class="label" id="p">Unknown</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Child safety
+                  </td>
+                  <td>
+                    <span class="label" id="s">Unknown</span>
+                  </td>
+                </tr>
+                <!--<tr>
+                  <td>
+                    Phising / Malware
+                  </td>
+                  <td>
+                    <span class="label" id="m">Notice</span>
+                  </td>
+                </tr>-->
+              </tbody>
+            </table>
+        </div>
+  </div><!-- /row -->
+
+  </section>
+{% endblock %}
+{% block js %}
+$(function() {
+  var key = '{{ url.host }}'
+  var g_sb_api_key = 'ABQIAAAAyhufKzHH0S8rsebYHK00ixS6RpcRrFkLacyqUFa-ibwVup_lWA'
+  $.getJSON("http://api.mywot.com/0.4/public_link_json?hosts={{ url.host }}/&callback=?", function(data){
+    console.log(data)
+    $('#t').html(rep(data[key][0][0]));  
+    $('#t').addClass(get_class(data[key][0][0]));   
+
+    $('#r').html(rep(data[key][1][0]));  
+    $('#r').addClass(get_class(data[key][1][0])); 
+    
+    $('#p').html(rep(data[key][2][0]));  
+    $('#p').addClass(get_class(data[key][2][0])); 
+    
+    $('#s').html(rep(data[key][4][0]));  
+    $('#s').addClass(get_class(data[key][4][0]));
+    
+    if(data[key][4][0] > 50 && data[key][2][0] > 50 && data[key][1][0] > 50 && data[key][0][0] > 50){
+      $('#status_label').removeClass('important')
+      $('#status_label').addClass('success')
+      $('#status_label').html('Safe')
+      $('#status').html(' You will be redirected to {{ full_url }} in 25 seconds. If not, <a href="{{ full_url }}">click here</a>.')
+      setTimeout("redir()", 25000);
+    }
+     
+  });
+  
+});
+
+function redir(){
+  window.location = '{{ full_url }}'
+}
+
+function rep(value){
+  var rep = '';
+  if(value >=0 ) rep = 'Very poor';
+  if(value >=20 ) rep = 'Poor';
+  if(value >=40 ) rep = 'Unsatisfactory';
+  if(value >=60 ) rep = 'Good';
+  if(value >=80 ) rep = 'Excellent';
+
+  return rep
+}
+
+function get_class(value){
+  var rep = '';
+  if(value >=0 ) rep = 'important';
+  if(value >=50 ) rep = 'success';
+  return rep
+}
+{% endblock %}
