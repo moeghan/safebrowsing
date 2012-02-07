@@ -38,8 +38,10 @@ $counter = 0;
 if(isset($_SERVER['ENV']) && $_SERVER['ENV'] == 'PAGODA' && $url != ''){
   /* procedural API */
   $memcache_obj = memcache_connect($_SERVER['MEMCACHE_HOST'], $_SERVER['MEMCACHE_PORT']);
+  //create if not exist
+  memcache_add($memcache_obj, 'counter', 0, false, 0);
   /* increment counter by 2 */
-  $counter = memcache_increment($memcache_obj, 'counter', 2);
+  $counter = memcache_increment($memcache_obj, 'counter', 1);
 }
 
 echo $h2o->render(array('counter' => $counter, 'full_url' => $url,'url' => parse_url($url)));
