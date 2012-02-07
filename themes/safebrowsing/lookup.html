@@ -104,7 +104,7 @@ $(function() {
       $('#status_label').removeClass('important')
       $('#status_label').addClass('success')
       $('#status_label').html('Safe')
-      $('#status').html(' You will be redirected to {{ full_url }} in 25 seconds. If not, <a href="{{ full_url }}">click here</a>.')
+      $('#status').html(' You will be redirected to {{ full_url }} shortly. If not, <a href="{{ full_url }}">click here</a>.')
       setTimeout("redir()", 25000);
     }
      
