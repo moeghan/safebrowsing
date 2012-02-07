@@ -24,7 +24,7 @@ require('./config.php');
  /** Loads the Noobita Environment and Template */
 require('./includes/noobita.php');
 $template = (isset($_GET['lookup'])) ? 'lookup' : 'index';
-if(count($_SERVER["REQUEST_URI"]) > 1 && !isset($_GET['lookup']) ){
+if(strlen($_SERVER["REQUEST_URI"]) > 1 && !isset($_GET['lookup']) ){
   $url = substr_replace($_SERVER["REQUEST_URI"],'', 0, 2);
   header('Location: ?lookup='.$url);
 }
