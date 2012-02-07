@@ -42,12 +42,9 @@ if(isset($_SERVER['ENV']) && $_SERVER['ENV'] == 'PAGODA'){
   //create if not exist
   memcache_add($memcache_obj, 'counter', 1, false, 0);
   var_dump($counter);
-  
-  if($url != '') {
-    /* increment counter by 1 */
-    $counter = memcache_increment($memcache_obj, 'counter');
-    var_dump($counter); 
-  }
+  /* increment counter by 1 */
+  $counter = memcache_increment($memcache_obj, 'counter');
+  var_dump($counter);
   $counter = ($counter == 0) ?  memcache_get($memcache_obj, 'counter') : $counter;
   
 }
