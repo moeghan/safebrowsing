@@ -31,5 +31,8 @@ if(count($_SERVER["REQUEST_URI"]) > 1 && !isset($_GET['lookup']) ){
 $h2o = new h2o('./themes/'.THEME.'/'.$template.'.html', 
   array('safeClass' => array('SimpleXMLElement','stdClass', 'Noobita'))
 );
-echo $h2o->render(array('full_url' => urldecode($_GET['lookup']),'url' => parse_url(urldecode($_GET['lookup']))));
+
+$url = (isset($_GET['lookup'])) ?  urldecode($_GET['lookup']) : '';
+
+echo $h2o->render(array('full_url' => $url,'url' => parse_url($url)));
 ?>
